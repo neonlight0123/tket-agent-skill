@@ -1,8 +1,9 @@
 # TKET Agent Skill
 
 An [Agent Skill](https://github.com/K-Dense-AI/scientific-agent-skills) for **TKET / pytket**,
-Quantinuum's open-source quantum compiler toolkit. It is written to the K-Dense-AI
-`scientific-agent-skills` conventions, so it can be dropped into that repo's `skills/` directory.
+Quantinuum's open-source quantum compiler toolkit. It follows the K-Dense-AI
+`scientific-agent-skills` conventions and the open [Agent Skills specification](https://agentskills.io),
+so it loads as a drop-in agent skill in any skills-compatible host.
 
 The skill teaches an agent to build, optimise, and execute quantum circuits with pytket: the
 half-turn angle convention, compilation passes and predicates, architecture-aware placement and
@@ -14,7 +15,7 @@ import/export, and conversions to Qiskit, Braket, IQM, and cuTensorNet.
 
 ```
 skills/tket/
-  SKILL.md                     entry point (277 lines; the spec cap is 500)
+  SKILL.md                     entry point
   references/
     setup.md                   install, versions, credentials, troubleshooting
     circuits.md                construction, gates, classical logic, boxes, inspection
@@ -30,7 +31,7 @@ skills/tket/
     compile_and_report.py      compile against a topology and report the gate/depth/CX delta
 tests/tket/
   conftest.py                  loads the upstream structural contract when available
-  test_scripts.py              53 tests + 32 subtests
+  test_scripts.py              52 test cases (each verified against installed pytket)
 ```
 
 `SKILL.md` is what an agent reads first. The `references/` files are consulted on demand — read only
@@ -76,12 +77,11 @@ python -m pip install pytest
 pytest tests/tket -q
 ```
 
-The suite is skipped cleanly when pytket or `pytket-qiskit[aer]` is not installed. `tests/tket/`
-exposes the upstream `tests/_contract` package as `skill_contract` when it is present (after grafting
-into `scientific-agent-skills`, or if that repo is cloned alongside this one) and skips the shared
-CLI-help contract test when it is not; everything else runs either way.
+The suite skips cleanly when pytket or `pytket-qiskit[aer]` is not installed. When the upstream
+`tests/_contract` package is available, `conftest.py` exposes it as `skill_contract` and also runs
+the shared CLI-`--help` contract test; everything else runs either way.
 
-## Grafting into `scientific-agent-skills`
+## Contributing to `scientific-agent-skills`
 
 To add this skill to a clone of [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills):
 
@@ -131,7 +131,7 @@ package. Where the official documentation and a `.pyi` type stub disagreed, **th
 
 ## License
 
-Apache-2.0, matching pytket itself. See [LICENSE](LICENSE).
+Apache-2.0, the same license that TKET/pytket itself uses. See [LICENSE](LICENSE).
 
 Cite TKET as: S. Sivarajah, R. Duncan, and A. Kissinger, *TKET*, Quantum Science and Technology
 **6**(1) 014003 (2020), [arXiv:2003.10611](https://arxiv.org/abs/2003.10611). Companion references
