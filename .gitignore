@@ -1,4 +1,4 @@
-# Cloned reference repositories (large; see README.md "Grafting into scientific-agent-skills").
+# Cloned reference repositories (large; source material consumed offline).
 # Both patterns MUST stay root-anchored with a leading slash: an unanchored `tket/`
 # also matches skills/tket/ and tests/tket/, which are the deliverables.
 /scientific-agent-skills/
