@@ -1,0 +1,28 @@
+# Cloned reference repositories (large; see README.md "Grafting into scientific-agent-skills").
+# Both patterns MUST stay root-anchored with a leading slash: an unanchored `tket/`
+# also matches skills/tket/ and tests/tket/, which are the deliverables.
+/scientific-agent-skills/
+/tket/
+
+# Python
+.venv/
+.venv-*/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# pip scratch
+pip-*/
+.piptmp/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Never commit credentials or local config
+.env
+.env.*
+*.token
