@@ -2,7 +2,7 @@
 
 An [Agent Skill](https://github.com/K-Dense-AI/scientific-agent-skills) for **TKET / pytket**,
 Quantinuum's open-source quantum compiler toolkit. It is written to the K-Dense-AI
-`scientific-agent-skills` conventions, so it can be dropped into that repo's `skills/` directory.
+`scientific-agent-skills` conventions.
 
 The skill teaches an agent to build, optimise, and execute quantum circuits with pytket: the
 half-turn angle convention, compilation passes and predicates, architecture-aware placement and
